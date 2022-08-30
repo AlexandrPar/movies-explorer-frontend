@@ -1,0 +1,40 @@
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+}
+
+.footer__title {
+    margin: auto 70px auto 70px;
+    padding: 79px 0 20px 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #A0A0A0;
+    border-bottom: solid 1px #E8E8E8;
+}
+
+.footer__info {
+    margin: 20px 70px auto 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer__link {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.footer__links a:last-of-type{
+margin: 0 0 0 20px;
+}

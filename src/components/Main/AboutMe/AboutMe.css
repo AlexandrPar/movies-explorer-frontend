@@ -1,0 +1,76 @@
+.me {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.me__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.me__content {
+    display: flex;
+    flex-direction: row;
+    margin: auto 70px auto 70px;
+}
+
+.me__title {
+    margin: auto 70px auto 70px;
+    padding: 100px 70px 23px 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    border-bottom: solid 1px #000000;
+}
+
+.me__name {
+    margin: 66px 0 0 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+}
+
+.me__job {
+    margin: 18px 0 0 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.me__bio {
+    margin: 26px 0 0 0;
+    max-width: 600px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.me__link {
+    margin: 99px 0 0 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.me__photo {
+    margin: 66px 70px auto auto;
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    object-fit: cover;
+}
