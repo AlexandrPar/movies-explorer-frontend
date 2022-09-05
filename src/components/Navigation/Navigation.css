@@ -1,0 +1,40 @@
+.navigation {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto 70px auto 44px;
+}
+
+.navigation__menu {
+    margin: 28px 0 28px 0;
+}
+
+.navigation__film{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+    color: #000000;
+    text-decoration: none;
+}
+
+.navigation__save-film{
+    margin: 0 0 0 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+    color: #000000;
+    text-decoration: none;
+}
+
+.navigation__account{
+    width: 100px;
+    height: 32px;
+    margin: 21px 0 21px 0;
+}

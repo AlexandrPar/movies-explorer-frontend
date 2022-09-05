@@ -1,0 +1,106 @@
+.search-form {
+    min-height: 228px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    margin: auto 70px auto 70px;
+}
+
+.search-form__container {
+    max-width: 1200px;
+    max-height: 48px;
+    margin: 80px 0 30px 0;
+}
+
+.search-form__input {
+    min-width: 84%;
+    height: 48px;
+    background: #F9F9F9;
+    border-radius: 4px;
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #A0A0A0;
+    text-indent: 22px;
+
+}
+
+.search-form__button {
+    margin: 0 0 0 10px;
+    padding: 0;
+    width: 6%;
+    height: 44px;
+    background: black;
+    border-radius: 4px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+
+}
+
+.search-form__filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch-button {
+    display: inline-block;
+}
+
+.switch-button .switch-button__checkbox {
+    display: none;
+}
+
+.switch-button .switch-button__label {
+    background-color: #ccc;
+    width: 36px;
+    height: 20px;
+    border-radius: 3rem;
+    display: inline-block;
+    position: relative;
+    transition: .3s;
+}
+
+.switch-button .switch-button__label:before {
+    transition: .3s;
+    display: block;
+    position: absolute;
+    left: .2rem;
+    top: 50%;
+    margin-top: -0.55rem;
+    width: 16px;
+    height: 16px;
+    background-color: #fdffff;
+    content: '';
+    border-radius: 50%;
+}
+
+.switch-button .switch-button__checkbox:checked+.switch-button__label {
+    background-color: #77dd77;
+    transition: .3s;
+}
+
+.switch-button .switch-button__checkbox:checked+.switch-button__label::before {
+    transform: translateX(16px);
+}
+
+.search-form__filter-label {
+    margin: 0 0 0 12px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
+
+}

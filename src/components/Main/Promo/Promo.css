@@ -46,11 +46,6 @@
     border-radius: 3px;
 }
 
-.promo__logo {
-    width: 38px;
-    height: 38px;
-}
-
 .promo__title {
     max-width: 626px;
     line-height: 52px;
