@@ -1,9 +1,7 @@
 .login {
-    min-height: 228px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 0 442px 70px 442px;
+    margin:  0 auto 70px auto;
 }
 
 .login__logo {
