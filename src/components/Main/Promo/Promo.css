@@ -21,30 +21,7 @@
     align-items: center;
 }
 
-.promo__navtab-singup {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    text-decoration: none;
-    color: black;
-}
 
-.promo__navtab-singin {
-    padding: 8px 20px 8px 20px;
-    margin: 0 70px 0 30px;
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    text-decoration: none;
-    border-radius: 3px;
-}
 
 .promo__title {
     max-width: 626px;

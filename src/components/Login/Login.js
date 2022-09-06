@@ -1,13 +1,27 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import UseForm from '../UseForm/UseForm';
 import './Login.css'
+
 import logo from '../../images/logo.svg'
 
-function Login() {
+function Login({ onLogin, email }) {
+    const { enteredValues, errors, isFormValid, handleChange } = UseForm({});
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        if (!enteredValues.email || !enteredValues.password || !isFormValid) {
+            console.log(isFormValid);
+            return;
+        }
+        onLogin(enteredValues.email, enteredValues.password);
+    }
     return (
         <div className='login'>
-            <img src={logo} className='login__logo' />
+            <Link to="/">
+                <img src={logo} alt="Логотип" className="login__logo" />
+            </Link>
             <h2 className='login__title'>Рады видеть!</h2>
-            <form className="login__form">
+            <form className="login__form" onSubmit={handleSubmit} noValidate>
                 <label className="label">E-mail</label>
                 <input
                     type="email"
@@ -17,8 +31,10 @@ function Login() {
                     minLength="2"
                     maxLength="40"
                     id="email-input"
+                    onChange={handleChange}
+                    value={enteredValues.email || ''}
                 />
-                <span id="email-error" className="email__input"></span>
+                <span id="email-error" className="error">{errors.email}</span>
                 <label className="label">Пароль</label>
                 <input
                     type="password"
@@ -28,10 +44,12 @@ function Login() {
                     minLength="2"
                     maxLength="200"
                     id="password-input"
+                    onChange={handleChange}
+                    value={enteredValues.password || ''}
                 />
-                <span id="password-error" className="password__error"></span>
+                <span id="password-error" className="error">{errors.password}</span>
                 <button type="submit" aria-label="Зарегистрироваться" className="login__submit">Войти</button>
-                <p className="login__subtitle">Ещё не зарегистрированы? <a to="/signup" className="login__link">Регистрация</a></p>
+                <p className="login__subtitle">Ещё не зарегистрированы? <Link to="/signup" className="login__link">Регистрация</Link></p>
             </form>
         </div>
     )

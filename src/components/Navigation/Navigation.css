@@ -6,6 +6,35 @@
     margin: auto 70px auto 44px;
 }
 
+.promo__navtab{
+    margin: 29px 0 29px 0;
+}
+
+.promo__navtab-singup {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.promo__navtab-singin {
+    padding: 8px 20px 8px 20px;
+    margin: 0 70px 0 30px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
 .navigation__menu {
     margin: 28px 0 28px 0;
 }
