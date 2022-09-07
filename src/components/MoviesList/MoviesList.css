@@ -1,14 +1,10 @@
 .movies-list {
-    max-width: 1280px;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    background-size: cover;
     margin: 70px 70px 80px 70px;
 }
 
 .movies-card {
-    max-width: 1140px;
     max-height: 134px;
     display: flex;
     flex-direction: row;
@@ -41,7 +37,26 @@
 
 .movies-card__like {
     margin: 0 0 22px 22px;
+    background-image: url('../../images/like_off.svg');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 14px;
+    height: 14px;
+    outline: none;
+    border: 0;
+}
+
+.movies-card__like_on{
     background-image: url('../../images/like_on.svg');
+}
+
+.movies-card__like_off{
+    background-image: url('../../images/like_off.svg');
+}
+
+.movies-card__dell{
+    margin: 0 0 22px 22px;
+    background-image: url('../../images/dell_card.svg');
     background-repeat: no-repeat;
     width: 14px;
     height: 14px;
@@ -62,4 +77,9 @@
     color: #000000;
     align-self: center;
     border: 2px solid #E8E8E8;
+}
+
+.movies-car__picture{
+    width: 220px;
+    height: 120px;
 }

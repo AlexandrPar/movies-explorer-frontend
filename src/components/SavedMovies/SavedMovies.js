@@ -1,9 +1,9 @@
 import React from 'react';
-import './Movies.css'
+import './SavedMovies.css'
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesList from '../MoviesList/MoviesList';
 
-function Movies() {
+function SavedMovies() {
     return (
         <>
             <SearchForm />
@@ -12,4 +12,4 @@ function Movies() {
     )
 }
 
-export default Movies;
+export default SavedMovies;
