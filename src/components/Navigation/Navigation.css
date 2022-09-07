@@ -6,7 +6,7 @@
     margin: auto 70px auto 44px;
 }
 
-.promo__navtab{
+.promo__navtab {
     margin: 29px 0 29px 0;
 }
 
@@ -39,7 +39,7 @@
     margin: 28px 0 28px 0;
 }
 
-.navigation__film{
+.navigation__film {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -50,7 +50,7 @@
     text-decoration: none;
 }
 
-.navigation__save-film{
+.navigation__save-film {
     margin: 0 0 0 15px;
     font-family: 'Inter';
     font-style: normal;
@@ -62,8 +62,120 @@
     text-decoration: none;
 }
 
-.navigation__account{
+.navigation__account {
     width: 100px;
     height: 32px;
     margin: 21px 0 21px 0;
+}
+
+.burger-menu {
+    display: none;
+    flex-grow: 1;
+}
+
+
+.menu__open {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+
+    .navigation {
+        display: none;
+    }
+
+    .menu__open {
+        display: block;
+        margin: 15px 30px 15px 0;
+        background-color: transparent;
+        border: none;
+    }
+
+    .menu__close{
+        background-color: transparent;
+        border: none;
+        width: 22px;
+        height: 22px;
+       margin: 22px 40px 105px auto;
+    }
+
+    .burger-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        visibility: hidden;
+        opacity: 0;
+        z-index: 1;
+        transition: visibility 0.3s linear, opacity 0.3s linear;
+    }
+
+    .burger-menu_open {
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .menu__container {
+        width: 68vw;
+        height: 100vh;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        list-style-type: none;
+    }
+
+    .menu__links{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu__link {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        color: #000000;
+        text-decoration: none;
+        align-self: center;
+    }
+
+    .menu__link:hover{
+        border-bottom: 2px #000000 solid;
+    }
+
+    .menu__item{
+        margin: 0 auto 28px auto;
+    }
+
+    .menu__button{
+        margin: 600px auto 90px auto;
+    }
+}
+
+@media screen and (max-width: 321px){
+    .menu__container {
+        width: 100vw;
+    }
+
+    .menu__item{
+        margin: 0 auto 24px auto;
+    }
+
+    .menu__button{
+        margin: 416px auto 46px auto;
+    }
+
 }

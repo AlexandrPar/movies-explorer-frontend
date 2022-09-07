@@ -3,11 +3,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   font-family: 'Inter', 'Arial', sans-serif;
   background-size: cover;
-}
-
-.page__main{
-  max-width: 1280px;
 }

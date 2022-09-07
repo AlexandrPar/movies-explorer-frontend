@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin: 0 35vw 0 35vw;
 }
 
 .register__logo {

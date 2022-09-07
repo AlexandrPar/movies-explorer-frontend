@@ -8,7 +8,6 @@ import profile from '../../images/profile.svg'
 
 function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     const handleMenuClick = () => {
         setIsMenuOpen(true);
     };
@@ -36,70 +35,32 @@ function Navigation() {
             </Route>
 
             <Route exact path={["/movies", "/saved-movies", "/profile"]}>
-                <button
-                    className="button header__nav-button header__nav-button_type_menu"
-                    type="button"
-                    onClick={handleMenuClick}
-                >
-                    <img src={menuOpen} className="header__nav-icon" alt='Меню'></img>
+                <div className='navigation'>
+                    <div className="navigation__menu">
+                        <Link
+                            className="navigation__film" to='/movies'>Фильмы</Link>
+                        <Link className="navigation__save-film" to='/saved-movies'>Сохраненные фильмы</Link>
+                    </div>
+                    <Link className="navigation__account" to='/profile'><img src={profile} alt='Аккаунт' /></Link>
+                </div>
+                <button className="menu__open" onClick={handleMenuClick}>
+                    <img className="menu__img" src={menuOpen} alt="Открыть" />
                 </button>
-                <nav
-                    className={`header__nav ${isMenuOpen ? " header__nav_open" : ""}`}
-                    onClick={handleOverlayClick}
-                >
-                    <button
-                        className="button header__nav-button header__nav-button_type_close"
-                        type="button"
-                        onClick={handleCloseMenu}
-                    >
-                        <img src={menuClose} className="header__nav-icon" alt='Закрыть'></img>
-                    </button>
-                    <ul className="header__nav-links" id="nav-links">
-                        <li className="header__nav-link-item header__nav-link-item_type_main">
-                            <Link
-                                className="link header__nav-link"
-                                to="/"
-                                onClick={handleCloseMenu}
-                            >
-                                Главная
-                            </Link>
-                        </li>
-                        <li className="header__nav-link-item header__nav-link-item_type_movies">
-                            <NavLink
-                                className="navigation__film"
-                                activeClassName="navigation__film_active"
-                                to="/movies"
-                                onClick={handleCloseMenu}
-                            >
-                                Фильмы
-                            </NavLink>
-                        </li>
-                        <li className="header__nav-link-item header__nav-link-item_type_saved-movies">
-                            <NavLink
-                                className="navigation__save-film"
-                                activeClassName="navigation__save-film_active"
-                                to="/saved-movies"
-                                onClick={handleCloseMenu}
-                            >
-                                Сохранённые фильмы
-                            </NavLink>
-                        </li>
-                        <li className="header__nav-link-item header__nav-link-item_type_profile">
-                            <Link
-                                className="link header__profile-link"
-                                to="/profile"
-                                onClick={handleCloseMenu}
-                            >
-                                <img
-                                    src={profile}
-                                    alt="Иконка профиля"
-                                    className="header__profile-link-icon"
-                                />
-                                Аккаунт
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+                <div className={`burger-menu ${isMenuOpen ? " burger-menu_open" : ""}`} onClick={handleOverlayClick}>
+                    <section className="menu menu_active">
+                        <div className="menu__container">
+                            <button className="menu__close" onClick={handleCloseMenu}>
+                                <img className="menu__img" src={menuClose} alt="Закрыть" />
+                            </button>
+                            <nav className="menu__links">
+                                <li className="menu__item" onClick={handleCloseMenu}><Link className="menu__link" to='/'>Главная</Link></li>
+                                <li className="menu__item" onClick={handleCloseMenu}><Link className="menu__link" to='/movies'>Фильмы</Link></li>
+                                <li className="menu__item" onClick={handleCloseMenu}><Link className="menu__link" to='/saved-movies'>Сохраненные фильмы</Link></li>
+                            </nav>
+                            <Link className="menu__button" to='/profile'><img src={profile} alt='Аккаунт' /></Link>
+                        </div>
+                    </section>
+                </div>
             </Route>
         </>
     );
