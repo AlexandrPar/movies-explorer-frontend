@@ -5,23 +5,15 @@ import './Login.css'
 
 import logo from '../../images/logo.svg'
 
-function Login({ onLogin, email }) {
-    const { enteredValues, errors, isFormValid, handleChange } = UseForm({});
-    function handleSubmit(evt) {
-        evt.preventDefault();
-        if (!enteredValues.email || !enteredValues.password || !isFormValid) {
-            console.log(isFormValid);
-            return;
-        }
-        onLogin(enteredValues.email, enteredValues.password);
-    }
+function Login() {
+    const { enteredValues, errors, handleChange } = UseForm({});
     return (
         <div className='login'>
             <Link to="/">
                 <img src={logo} alt="Логотип" className="login__logo" />
             </Link>
             <h2 className='login__title'>Рады видеть!</h2>
-            <form className="login__form" onSubmit={handleSubmit} noValidate>
+            <form className="form login__form"  noValidate>
                 <label className="label">E-mail</label>
                 <input
                     type="email"

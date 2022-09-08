@@ -1,6 +1,5 @@
 .register {
     min-height: 228px;
-    width: 100%;
     display: flex;
     flex-direction: column;
     margin: 0 35vw 0 35vw;
@@ -79,6 +78,7 @@
     line-height: 17px;
     text-align: center;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .register__subtitle {
@@ -94,4 +94,30 @@
 
 .login__link {
     color: #000000;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 790px) {
+    .register {
+        margin: 0 19vw 0 19vw;
+    }
+}
+
+
+@media screen and (max-width: 470px) {
+    .register {
+        margin: 0 7vw 0 7vw;
+       align-items: center;
+    }
+
+    .register__logo {
+        margin: 56px 0 0 0;
+        width: 38px;
+        height: 38px;
+    }
+
+    .register__form {
+        width: 260px;
+    }
+
 }

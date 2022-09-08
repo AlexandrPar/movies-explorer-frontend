@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import React, { useState } from 'react';
+import { Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -11,7 +11,27 @@ import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 
+
 function App() {
+  const User = { name: 'Виталий', email: 'pochta@yandex.ru', password: '123' }
+
+  const [newUser, setNewUser] = useState(User);
+
+  const history = useHistory();
+
+
+  function updateUser(evt) {
+    evt.preventDefault();
+    const name = evt.target.name.value;
+    const email = evt.target.email.value;
+    const password = evt.target.password.value;
+    setNewUser({
+      ...newUser,
+      name: name, email: email, password: password
+    });
+    history.push('/profile');
+  }
+
   return (
     <div className="page">
       <Header />
@@ -27,16 +47,20 @@ function App() {
             <SavedMovies />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile
+              updateUser={updateUser}
+              userName={newUser.name}
+              email={newUser.email} />
           </Route>
           <Route path="/signup">
-            <Register />
+            <Register
+              updateUser={updateUser} />
           </Route>
           <Route path="/signin">
             <Login />
           </Route>
           <Route path="*">
-            <NotFound  />
+            <NotFound />
           </Route>
         </Switch>
       </main>

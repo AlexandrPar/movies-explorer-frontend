@@ -1,19 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import UseForm from '../UseForm/UseForm';
 import './Register.css'
 import logo from '../../images/logo.svg'
 
-function Register({ onLogin, email }) {
-    const { enteredValues, errors, isFormValid, handleChange } = UseForm({});
-    function handleSubmit(evt) {
-        evt.preventDefault();
-        if (!enteredValues.email || !enteredValues.password || !isFormValid) {
-            console.log(isFormValid);
-            return;
-        }
-        onLogin(enteredValues.email, enteredValues.password);
-    }
+function Register({updateUser}) {
+    const { enteredValues, errors, handleChange } = UseForm({});
+
 
     return (
         <div className='register'>
@@ -21,7 +14,7 @@ function Register({ onLogin, email }) {
                 <img src={logo} alt="Логотип" className="register__logo" />
             </Link>
             <h2 className='register__title'>Добро Пожаловать!</h2>
-            <form className="register__form" onSubmit={handleSubmit} noValidate>
+            <form className="form register__form" onSubmit={updateUser} noValidate>
                 <label className="label">Имя</label>
                 <input
                     className="input login__input"

@@ -3,20 +3,14 @@ import { Link } from "react-router-dom";
 import UseForm from '../UseForm/UseForm';
 import './Profile.css'
 
-function Profile({ loggedIn, userName, email, isMenuOpen, onClicOpen }) {
-    const { enteredValues, errors, isFormValid, handleChange } = UseForm({});
-    function handleSubmit(evt) {
-        evt.preventDefault();
-        if (!enteredValues.email || !enteredValues.password || !isFormValid) {
-            console.log(isFormValid);
-            return;
-        }
-    }
+function Profile({ updateUser, userName, email}) {
+    const { enteredValues, errors, handleChange } = UseForm({});
+    
 
     return (
         <div className='profile'>
             <h2 className='profile__title'>Привет, {userName}!</h2>
-            <form className="profile__form" onSubmit={handleSubmit} noValidate>
+            <form className="profile__form" onSubmit={updateUser} noValidate>
                 <input
                     className="input login__input"
                     aria-label="Имя"
@@ -27,7 +21,7 @@ function Profile({ loggedIn, userName, email, isMenuOpen, onClicOpen }) {
                     minLength="2"
                     maxLength="30"
                     onChange={handleChange}
-                    placeholder='Имя'
+                    placeholder={userName}
                     value={enteredValues.name || ''}
                 />
                 <span id="name-error" className="error">{errors.name}</span>
@@ -40,12 +34,12 @@ function Profile({ loggedIn, userName, email, isMenuOpen, onClicOpen }) {
                     maxLength="40"
                     id="email-input"
                     onChange={handleChange}
-                    placeholder='E-mail'
+                    placeholder={email}
                     value={enteredValues.email || ''}
                 />
                 <span id="email-error" className="error">{errors.email}</span>
-                <button type="submit" aria-label="Редактировать" className="register__submit">Редактировать</button>
-                <Link to="/signin" className="login__link login__link_profile">Выйти из аккаунта</Link>
+                <button type="submit" aria-label="Редактировать" className="profile__submit">Редактировать</button>
+                <Link to="/signin" className="profile__link_login">Выйти из аккаунта</Link>
             </form>
         </div>
     )
