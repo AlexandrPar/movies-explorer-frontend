@@ -76,6 +76,7 @@
 
 .menu__open {
     display: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
@@ -91,12 +92,13 @@
         border: none;
     }
 
-    .menu__close{
+    .menu__close {
         background-color: transparent;
         border: none;
         width: 22px;
         height: 22px;
-       margin: 22px 40px 105px auto;
+        margin: 22px 40px 105px auto;
+        cursor: pointer;
     }
 
     .burger-menu {
@@ -134,7 +136,7 @@
         list-style-type: none;
     }
 
-    .menu__links{
+    .menu__links {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -152,29 +154,29 @@
         align-self: center;
     }
 
-    .menu__link:hover{
+    .menu__link:hover {
         border-bottom: 2px #000000 solid;
     }
 
-    .menu__item{
+    .menu__item {
         margin: 0 auto 28px auto;
     }
 
-    .menu__button{
+    .menu__button {
         margin: 600px auto 90px auto;
     }
 }
 
-@media screen and (max-width: 321px){
+@media screen and (max-width: 321px) {
     .menu__container {
         width: 100vw;
     }
 
-    .menu__item{
+    .menu__item {
         margin: 0 auto 24px auto;
     }
 
-    .menu__button{
+    .menu__button {
         margin: 416px auto 46px auto;
     }
 

@@ -14,21 +14,25 @@ function MoviesList() {
         <div className='movies-list'>
             <div className='movies-card'>
                 <div className='movies-card__description'>
-                    <h3 className='movies-card__title'>33 слова о дизайне</h3>
-                    <p className='movies-card__duration'>1ч 42м</p>
+                    <div className="movies__info">
+                        <h3 className='movies-card__title'>33 слова о дизайне</h3>
+                        <p className='movies-card__duration'>1ч 42м</p>
+                    </div>
                     {path.pathname === "/movies" && (<button className="movies-card__like" onClick={toggleHandler}></button>)}
                     {path.pathname === "/saved-movies" && (<button className='movies-card__dell'></button>)}
                 </div>
-                <img className='movies-car__picture' src={pic1} />
+                <img className='movies-car__picture' src={pic1} alt='Постер' />
             </div>
             <div className='movies-card'>
                 <div className='movies-card__description'>
-                    <h3 className='movies-card__title'>Киноальманах «100 лет дизайна»</h3>
-                    <p className='movies-card__duration'>1ч 42м</p>
+                    <div className="movies__info">
+                        <h3 className='movies-card__title'>Киноальманах «100 лет дизайна»</h3>
+                        <p className='movies-card__duration'>1ч 42м</p>
+                    </div>
                     {path.pathname === "/movies" && (<button className="movies-card__like" onClick={toggleHandler}></button>)}
                     {path.pathname === "/saved-movies" && (<button className='movies-card__dell'></button>)}
                 </div>
-                <img className='movies-car__picture' src={pic2} />
+                <img className='movies-car__picture' src={pic2} alt='Постер' />
             </div>
             {path.pathname === "/movies" && (<button className='movies-list__more'>Ещё</button>)}
         </div >

@@ -44,17 +44,18 @@
     height: 14px;
     outline: none;
     border: 0;
+    cursor: pointer;
 }
 
-.movies-card__like_on{
+.movies-card__like_on {
     background-image: url('../../images/like_on.svg');
 }
 
-.movies-card__like_off{
+.movies-card__like_off {
     background-image: url('../../images/like_off.svg');
 }
 
-.movies-card__dell{
+.movies-card__dell {
     margin: 0 0 22px 22px;
     background-image: url('../../images/dell_card.svg');
     background-repeat: no-repeat;
@@ -77,9 +78,63 @@
     color: #000000;
     align-self: center;
     border: 2px solid #E8E8E8;
+    cursor: pointer;
 }
 
-.movies-car__picture{
+.movies-car__picture {
     width: 220px;
     height: 120px;
+}
+
+@media screen and (max-width: 790px) {
+    .movies-list {
+        margin: 70px 30px 80px 30px;
+    }
+}
+
+
+@media screen and (max-width: 470px) {
+    .movies-list {
+        margin: 40px 10px 20px 10px;
+    }
+
+    .movies-card {
+        max-height: 500px;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .movies-car__picture {
+        width: 300px;
+        height: 168px;
+        align-self: center;
+    }
+
+    .movies-card__description {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .movies-card__title {
+        margin: 14px 0 8px 12px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .movies-card__duration {
+        margin: 0 0 14px 12px;
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .movies-card__like {
+        margin: 16px 16px 0 auto;
+    }
+    
+    .movies-list__more {
+        width: 240px;
+        height: 36px;
+    }
+    
 }
