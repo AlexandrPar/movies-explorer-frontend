@@ -52,7 +52,7 @@
 
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 370px) {
     .footer__title {
         margin: auto 10px auto 10px;
     }

@@ -57,7 +57,7 @@ function Navigation() {
                                 <li className="menu__item" onClick={handleCloseMenu}><Link className="menu__link" to='/movies'>Фильмы</Link></li>
                                 <li className="menu__item" onClick={handleCloseMenu}><Link className="menu__link" to='/saved-movies'>Сохраненные фильмы</Link></li>
                             </nav>
-                            <Link className="menu__button" to='/profile'><img src={profile} alt='Аккаунт' /></Link>
+                            <Link className="menu__button" to='/profile'  onClick={handleCloseMenu}><img src={profile} alt='Аккаунт' /></Link>
                         </div>
                     </section>
                 </div>

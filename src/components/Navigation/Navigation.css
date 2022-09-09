@@ -180,4 +180,8 @@
         margin: 416px auto 46px auto;
     }
 
+    .menu__open {
+        margin: 15px 14px 15px 0;
+    }
+
 }

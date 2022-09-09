@@ -40,9 +40,6 @@
     text-decoration: none;
 }
 
-.footer{
-    display: none;
-}
 
 @media screen and (max-width: 767px) {
     .notFound {

@@ -19,10 +19,6 @@ function Header() {
       </Route>
     </Switch>
   );
-    // <header className="header">
-    //   <img src={logo} className='header__logo' />
-    //   <Navigation />
-    // </header>
 }
 
 export default Header

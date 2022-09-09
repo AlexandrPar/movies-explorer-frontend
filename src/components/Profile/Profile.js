@@ -11,8 +11,9 @@ function Profile({ updateUser, userName, email}) {
         <div className='profile'>
             <h2 className='profile__title'>Привет, {userName}!</h2>
             <form className="profile__form" onSubmit={updateUser} noValidate>
+            <label className="profile__label">Имя</label>
                 <input
-                    className="input login__input"
+                    className="input login__input input__profile"
                     aria-label="Имя"
                     type="Text"
                     name="name"
@@ -21,13 +22,14 @@ function Profile({ updateUser, userName, email}) {
                     minLength="2"
                     maxLength="30"
                     onChange={handleChange}
-                    placeholder={userName}
+                    placeholder= {userName}
                     value={enteredValues.name || ''}
                 />
                 <span id="name-error" className="error">{errors.name}</span>
+                <label className="profile__label">E-mail</label>
                 <input
                     type="email"
-                    className="input email__input"
+                    className="input email__input input__profile"
                     name="email"
                     required
                     minLength="2"

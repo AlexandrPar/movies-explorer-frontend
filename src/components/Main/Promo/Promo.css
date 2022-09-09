@@ -34,10 +34,13 @@
 
 .promo__image {
     margin: auto 70px 60px auto;
+    height: 244px;
+    background-size: cover;
+    
 }
 
 @media screen and (max-width: 767px) {
-    .promo{
+    .promo {
         min-height: 918px;
     }
 
@@ -55,13 +58,15 @@
     }
 
     .promo__image {
-        margin: auto 44px 70px 44px;
+        margin: auto 30px 70px 30px;
+        height: 230px;
+        object-fit: cover;
     }
 
 }
 
 @media screen and (max-width: 321px) {
-    .promo{
+    .promo {
         min-height: 704px;
     }
 
@@ -86,8 +91,8 @@
     .promo__image {
         background-repeat: no-repeat;
         overflow: hidden;
+        width: 100%;
         margin: 0 0 40px 0;
-        object-fit: cover;
     }
 
 }
