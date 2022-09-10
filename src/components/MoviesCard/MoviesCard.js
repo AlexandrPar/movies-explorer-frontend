@@ -18,8 +18,8 @@ function MoviesCard() {
                         <h3 className='movies-card__title'>33 слова о дизайне</h3>
                         <p className='movies-card__duration'>1ч 42м</p>
                     </div>
-                    {path.pathname === "/movies" && (<button className="movies-card__like" onClick={toggleHandler}></button>)}
-                    {path.pathname === "/saved-movies" && (<button className='movies-card__dell'></button>)}
+                    {path.pathname === "/movies" && (<button type="checkbox" className="movies-card__like" onClick={toggleHandler}></button>)}
+                    {path.pathname === "/saved-movies" && (<button type="button" className='movies-card__dell'></button>)}
                 </div>
                 <img className='movies-car__picture' src={pic1} alt='Постер' />
             </div>
@@ -29,8 +29,8 @@ function MoviesCard() {
                         <h3 className='movies-card__title'>Киноальманах «100 лет дизайна»</h3>
                         <p className='movies-card__duration'>1ч 42м</p>
                     </div>
-                    {path.pathname === "/movies" && (<button className="movies-card__like" onClick={toggleHandler}></button>)}
-                    {path.pathname === "/saved-movies" && (<button className='movies-card__dell'></button>)}
+                    {path.pathname === "/movies" && (<button type="checkbox" className="movies-card__like" onClick={toggleHandler}></button>)}
+                    {path.pathname === "/saved-movies" && (<button type="button" className='movies-card__dell'></button>)}
                 </div>
                 <img className='movies-car__picture' src={pic2} alt='Постер' />
             </div>

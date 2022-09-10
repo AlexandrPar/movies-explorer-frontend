@@ -8,7 +8,7 @@ function MoviesList() {
     return (
         <div className='movies-list'>
             <MoviesCard />
-            {path.pathname === "/movies" && (<button className='movies-list__more'>Ещё</button>)}
+            {path.pathname === "/movies" && (<button type="submit" className='movies-list__more'>Ещё</button>)}
         </div >
     )
 }

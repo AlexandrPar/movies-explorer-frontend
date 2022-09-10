@@ -43,13 +43,13 @@ function Navigation() {
                     </div>
                     <Link className="navigation__account" to='/profile'><img src={profile} alt='Аккаунт' /></Link>
                 </div>
-                <button className="menu__open" onClick={handleMenuClick}>
+                <button type="button" className="menu__open" onClick={handleMenuClick}>
                     <img className="menu__img" src={menuOpen} alt="Открыть" />
                 </button>
                 <div className={`burger-menu ${isMenuOpen ? " burger-menu_open" : ""}`} onClick={handleOverlayClick}>
                     <section className="menu menu_active">
                         <div className="menu__container">
-                            <button className="menu__close" onClick={handleCloseMenu}>
+                            <button type="button" className="menu__close" onClick={handleCloseMenu}>
                                 <img className="menu__img" src={menuClose} alt="Закрыть" />
                             </button>
                             <nav className="menu__links">

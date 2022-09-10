@@ -12,7 +12,7 @@ function SearchForm() {
                     name="searchFilm"
                     required
                 />
-                <button className='search-form__button'>Найти</button>
+                <button className='search-form__button'  type="submit">Найти</button>
             </div>
             <div className="search-form__filter">
                 <div>
