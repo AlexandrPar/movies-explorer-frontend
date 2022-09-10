@@ -53,6 +53,7 @@
     margin: 0 0 22px 22px;
     background-image: url('../../images/dell_card.svg');
     background-repeat: no-repeat;
+    background-color: transparent;
     width: 14px;
     height: 14px;
     outline: none;
@@ -63,6 +64,7 @@
 .movies-car__picture {
     width: 220px;
     height: 120px;
+    margin: 6px 6px 6px auto;
 }
 
 
@@ -75,9 +77,10 @@
     }
 
     .movies-car__picture {
-        width: 300px;
+        width: 290px;
         height: 168px;
         align-self: center;
+        margin: 0 auto 0 auto;
     }
 
     .movies-card__description {

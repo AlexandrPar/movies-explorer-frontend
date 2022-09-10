@@ -110,9 +110,11 @@
     }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 670px) {
     .techs__list {
+        max-width: 500px;
         margin: 0 10px 60px 10px;
+        align-self: center;
     }
 
     .techs__item {
@@ -124,9 +126,22 @@
     }
 }
 
+@media screen and (max-width: 510px){
+    .techs__list {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 510px){
+    .techs__list {
+        max-width: 300px;
+    }
+}
+
 @media screen and (max-width: 321px) {
     .techs {
         min-height: 651px;
+        background-color: #FFFFFF;
     }
 
     .techs__title {

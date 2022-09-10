@@ -7,19 +7,19 @@ function Portfolio() {
             <h3 className='portfolio__title'>Портфолио</h3>
             <ul className='portfolio__projects'>
                 <li className="portfolio__link-item">
-                    <a className='portfolio__link' href='https://github.com/AlexandrPar/how-to-learn'>
+                    <a className='portfolio__link' rel="noopener noreferrer" href='https://github.com/AlexandrPar/how-to-learn' target="_blank">
                         <span className='portfolio__text-link'>Статичный сайт</span>
                         <span className='portfolio__arrow-link'>↗</span>
                     </a>
                 </li>
                 <li className="portfolio__link-item">
-                    <a className='portfolio__link' href='https://github.com/AlexandrPar/russian-travel'>
+                    <a className='portfolio__link' rel="noopener noreferrer" href='https://github.com/AlexandrPar/russian-travel' target="_blank">
                         <span className='portfolio__text-link'>Адаптивный сайт</span>
                         <span className='portfolio__arrow-link'>↗</span>
                     </a>
                 </li>
                 <li className="portfolio__link-item">
-                    <a className='portfolio__link' href='https://github.com/AlexandrPar/react-mesto-api-full'>
+                    <a className='portfolio__link' rel="noopener noreferrer" href='https://github.com/AlexandrPar/react-mesto-api-full' target="_blank">
                         <span className='portfolio__text-link'>Одностраничное приложение</span>
                         <span className='portfolio__arrow-link'>↗</span>
                     </a>
