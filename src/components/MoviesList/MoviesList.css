@@ -1,0 +1,41 @@
+.movies-list {
+    display: flex;
+    flex-direction: column;
+    margin: 70px 70px 80px 70px;
+}
+
+.movies-list__more {
+    width: 320px;
+    height: 36px;
+    background: transparent;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #000000;
+    align-self: center;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 790px) {
+    .movies-list {
+        margin: 70px 30px 80px 30px;
+    }
+}
+
+
+@media screen and (max-width: 470px) {
+    .movies-list {
+        margin: 40px 10px 20px 10px;
+    }
+
+    .movies-list__more {
+        width: 240px;
+        height: 36px;
+    }
+}

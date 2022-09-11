@@ -1,0 +1,12 @@
+.header{
+    max-height: 74px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header__theme_pink {
+    background-color: #F3C1F8;;
+}
+
+
