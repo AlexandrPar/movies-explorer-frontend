@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import Header from '../Header/Header';
@@ -10,27 +10,80 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import * as auth from '../../utils/MainApi';
 
 
 function App() {
-  const User = { name: 'Виталий', email: 'pochta@yandex.ru', password: '123' }
-
-  const [newUser, setNewUser] = useState(User);
-
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [showPreloader, setShowPreloader] = useState(false);
 
+  function handleRegister({ name, email, password }) {
+    return auth
+      .signup(name, email, password)
+      .then((res) => {
+        if (res) {
+          history.push("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(`Ошибка регистрации: ${err}`);
+      });
+  };
 
-  function updateUser(evt) {
-    evt.preventDefault();
-    const name = evt.target.name.value;
-    const email = evt.target.email.value;
-    const password = evt.target.password.value;
-    setNewUser({
-      ...newUser,
-      name: name, email: email, password: password
-    });
-    history.push('/profile');
-  }
+  function handleLogin({ email, password }) {
+    auth
+      .signin(email, password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          tokenCheck();
+        }
+      })
+      .catch((err) => {
+        console.log(`Ошибка авторизации: ${err}`);
+        console.log(email, password);
+      });
+  };
+
+  function tokenCheck() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      auth
+        .checkToken(token)
+        .then((res) => {
+          if (res) {
+            setCurrentUser(res)
+            setEmail(res.email);
+            setLoggedIn(true);
+            history.push('/');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const signOut = () => {
+    setLoggedIn(false);
+    setEmail('');
+    setCurrentUser('');
+    localStorage.removeItem('token');
+    history.push("/login");
+  };
+
+  useEffect(() => {
+    tokenCheck();
+  }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+      history.push("/main");
+    }
+  }, [loggedIn, history]);
 
   return (
     <div className="page">
@@ -47,24 +100,24 @@ function App() {
             <SavedMovies />
           </Route>
           <Route path="/profile">
-            <Profile
-              updateUser={updateUser}
-              userName={newUser.name}
-              email={newUser.email} />
+            <Profile />
           </Route>
           <Route path="/signup">
             <Register
-              updateUser={updateUser} />
+              handleRegister={handleRegister}
+              showPreloader={showPreloader} />
           </Route>
           <Route path="/signin">
-            <Login />
+            <Login
+              onLogin={handleLogin}
+              showPreloader={showPreloader} />
           </Route>
           <Route path="*">
             <NotFound />
           </Route>
         </Switch>
       </main>
-        <Footer />
+      <Footer />
     </div>
   );
 }
