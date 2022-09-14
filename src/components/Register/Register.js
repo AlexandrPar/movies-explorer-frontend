@@ -7,22 +7,15 @@ import Preloader from '../Preloader/Preloader';
 
 function Register({ handleRegister }) {
     const { enteredValues, errors, isFormValid, handleChange } = UseForm({});
-    
-    const [form, setForm] = useState({
-        name: "",
-        email: "",
-        password: "",
-    });
-
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        const { name, email, password } = form;
         if (!enteredValues.name || !enteredValues.email || !enteredValues.password || !isFormValid) {
             return;
         }
-        handleRegister({ name, email, password });
+        handleRegister(enteredValues.name, enteredValues.email, enteredValues.password);
     }
+
 
     return (
         <div className='register'>

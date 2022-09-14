@@ -21,7 +21,6 @@ function Login({ onLogin, showPreloader }) {
             </Link>
             <h2 className='login__title'>Рады видеть!</h2>
             <form className="form login__form" onSubmit={handleSubmit} noValidate>
-                <Preloader showPreloader={showPreloader} />
                 <label className="label">E-mail</label>
                 <input
                     type="email"

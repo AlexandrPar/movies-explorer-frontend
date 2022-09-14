@@ -1,7 +1,7 @@
 class MoviesApi {
-    constructor(item) {
-        this._url = item.url;
-        this._headers = item.headers;
+    constructor({url, headers}) {
+        this._url = url;
+        this.headers = headers;
     }
 
     _getRequest(res) {
@@ -13,11 +13,9 @@ class MoviesApi {
 
 
     getMassivMovies() {
-        return fetch(this._baseUrl, {
+        return fetch(this._url, {
             method: 'GET',
-            headers: {
-                "Content-Type": "application/json",
-            }
+            headers: { ...this.headers },
         })
       .then(res => {
             return this._getRequest(res)
@@ -26,5 +24,11 @@ class MoviesApi {
 }
 
 export const moviesApi = new MoviesApi({
-    baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
+    url: 'https://api.nomoreparties.co/beatfilm-movies',
+    headers() { 
+        return  {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+        }
+      }
 });
