@@ -43,6 +43,11 @@
     cursor: pointer;
 }
 
+.login__submit_disabled {
+    margin: 134px 0 16px 0;
+    height: 45px;
+}
+
 .login__subtitle {
     margin: 0;
     font-family: 'Inter';
@@ -64,7 +69,7 @@
 @media screen and (max-width: 470px) {
     .login {
         margin: 0 7vw 0 7vw;
-       align-items: center;
+        align-items: center;
     }
 
     .login__logo {

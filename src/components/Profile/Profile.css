@@ -39,6 +39,10 @@
     cursor: pointer;
 }
 
+.profile__submit_disabled{
+    color: #A0A0A0;
+}
+
 .profile__link_login {
     font-family: 'Inter';
     font-style: normal;

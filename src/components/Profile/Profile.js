@@ -27,7 +27,7 @@ function Profile({ handleUpdateUser, onClick}) {
     return (
         <div className='profile'>
             <h2 className='profile__title'>Привет, {currentUser.name}!</h2>
-            <form className="profile__form" onSubmit={handleSubmit} noValidate>
+            <form className="form profile__form" onSubmit={handleSubmit} noValidate>
                 <label className="profile__label">Имя</label>
                 <input
                     className="input login__input input__profile"
@@ -41,7 +41,7 @@ function Profile({ handleUpdateUser, onClick}) {
                     placeholder={currentUser.name}
                     pattern="[A-Za-zА-Яа-яЁё\s-]{2,30}"
                     onChange={handleChange}
-                    value={currentUser.name}
+                    defaultValue={currentUser.name}
                 />
                 <span id="name-error" className="error">{errors.name ? 'поле Имя от 2 до 30 символов, содержит только латиницу, кириллицу, пробел или дефис.' : ''}</span>
                 <label className="profile__label">E-mail</label>
@@ -55,7 +55,7 @@ function Profile({ handleUpdateUser, onClick}) {
                     id="email"
                     onChange={handleChange}
                     placeholder={currentUser.email}
-                    value={currentUser.email}
+                    defaultValue={currentUser.email}
                 />
                 <span id="email-error" className="error">{errors.email}</span>
                 <button disabled={!isFormValid || isNotChange} type="submit" aria-label="Редактировать" className={`profile__submit ${(isFormValid && !isNotChange) ? '' : 'profile__submit_disabled'}`}>Редактировать</button>

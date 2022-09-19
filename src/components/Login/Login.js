@@ -47,7 +47,7 @@ function Login({ onLogin, showPreloader }) {
                     value={enteredValues.password || ''}
                 />
                 <span id="password-error" className="error">{errors.password}</span>
-                <button type="submit" disabled={!isFormValid || showPreloader} aria-label="Зарегистрироваться" className={isFormValid ? 'login__submit' : 'login__submit login__submit_disabled'}>Войти</button>
+                <button type="submit" disabled={!isFormValid || showPreloader} aria-label="Зарегистрироваться" className={isFormValid ? 'login__submit' : 'login__submit_disabled'}>Войти</button>
                 <p className="login__subtitle">Ещё не зарегистрированы? <Link to="/signup" className="login__link">Регистрация</Link></p>
             </form>
         </div>

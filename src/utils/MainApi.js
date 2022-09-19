@@ -49,5 +49,54 @@ export const setUserInfo = (token, name, email) => {
         },
         body: JSON.stringify({ name: name, email: email })
     })
+        .then(getRequest)
+}
+
+export const getMovies = (token) => {
+    return fetch(`${BASE_URL}/movies`, {
+        method: 'GET',
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`,
+        },
+    })
+        .then(getRequest)
+}
+
+export const postMovie = (data, token) => {
+    return fetch(`${BASE_URL}/movies`, {
+        method: 'POST',
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            country: data.country || 'unknown',
+            director: data.director,
+            duration: data.duration,
+            year: data.year,
+            description: data.description,
+            image: `https://api.nomoreparties.co${data.image.url}`,
+            trailerLink: data.trailerLink,
+            thumbnail: `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`,
+            movieId: data.id,
+            nameRU: data.nameRU,
+            nameEN: data.nameEN || 'unknown'
+        }),
+    })
+        .then(getRequest)
+}
+
+export const deleteMovie = (id, token) => {
+    return fetch(`${BASE_URL}/movies/${id}`, {
+        method: 'DELETE',
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`,
+        },
+    })
     .then(getRequest)
 }
