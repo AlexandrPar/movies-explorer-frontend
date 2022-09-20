@@ -11,8 +11,12 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import * as auth from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import success from "../../images/okImg.svg";
+import fail from "../../images/failsImg.svg";
+
 
 
 function App() {
@@ -20,23 +24,38 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState('');
   const [savedMovies, setSavedMovies] = useState([]);
+  const [tooltipStatus, setTooltipStatus] = useState({ url: "", title: "" });
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(false);
   const history = useHistory();
 
   function handleRegister(name, email, password) {
+    setShowPreloader(true);
     return auth
       .signup(name, email, password)
       .then((res) => {
         if (res) {
-          history.push("/signin");
+          history.push("/movies");
+          setIsInfoTooltipOpen(true);
+          setTooltipStatus({
+            url: success,
+            title: "Вы успешно зарегистрировались!",
+          });
         }
       })
       .catch((err) => {
-        console.log(name, email, password);
         console.log(`Ошибка регистрации: ${err}`);
+        setIsInfoTooltipOpen(true);
+        setTooltipStatus({
+          url: fail,
+          title: `Ошибка регистрации: ${err}`,
+        });
       })
+      .finally(() => {setShowPreloader(false);})
   };
 
   function handleLogin(email, password) {
+    setShowPreloader(true);
     auth
       .signin(email, password)
       .then((res) => {
@@ -50,7 +69,11 @@ function App() {
       })
       .catch((err) => {
         console.log(`Ошибка авторизации: ${err}`);
-        console.log(email, password);
+        setIsInfoTooltipOpen(true);
+        setTooltipStatus({
+            url: fail,
+            title: `Ошибка авторизации: ${err}`,
+        });
       })
   };
 
@@ -78,9 +101,19 @@ function App() {
     auth.setUserInfo(token, name, email)
       .then((res) => {
         setCurrentUser({ name: res.name, email: res.email, id: res._id })
+        setIsInfoTooltipOpen(true);
+        setTooltipStatus({
+            url: success,
+            title: `Данные успешно обновлены!`,
+        });
       })
       .catch((err) => {
         console.log(`Ошибка обновления данных: ${err}`);
+        setIsInfoTooltipOpen(true);
+        setTooltipStatus({
+            url: fail,
+            title: `Ошибка обновления данных: ${err}`,
+        });
       });
   }
 
@@ -147,6 +180,7 @@ function App() {
   }
 
   function getSavedMovies() {
+    setShowPreloader(true);
     const token = localStorage.getItem('token');
     auth.getMovies(token)
       .then(data => {
@@ -155,6 +189,7 @@ function App() {
       .catch(err => {
         console.log(`Ошибка загрузки данных: ${err}`);
       })
+      .finally(() => setShowPreloader(false));
   }
 
   function onMovieSave(movie) {
@@ -165,10 +200,19 @@ function App() {
         .postMovie(movie, token)
         .then((newMovie) => {
           updateSavedMovies([newMovie, ...savedMovies])
-          console.log('Фильм успешно добавлен в избранное.');
+          setIsInfoTooltipOpen(true);
+          setTooltipStatus({
+            url: success,
+            title: 'Фильм успешно добавлен в избранное.',
+        });
         })
         .catch((err) => {
           console.log(`Ошибка загрузки данных: ${err}`);
+          setIsInfoTooltipOpen(true);
+          setTooltipStatus({
+            url: fail,
+            title: `Ошибка загрузки данных: ${err}`,
+        });
         });
     } else {
       const id = savedMovies.find(item => item.movieId === movie.id)._id;
@@ -176,10 +220,19 @@ function App() {
         .deleteMovie(id, token)
         .then(() => {
           updateSavedMovies(savedMovies.filter(movie => movie._id === id ? null : movie));
-          console.log('Фильм успешно удален из избранного.');
+          setIsInfoTooltipOpen(true);
+          setTooltipStatus({
+            url: success,
+            title: 'Фильм успешно удален из избранного.',
+        });
         })
         .catch((err) => {
           console.log(`Ошибка удаления данных: ${err}`);
+          setIsInfoTooltipOpen(true);
+          setTooltipStatus({
+            url: fail,
+            title: `Ошибка удаления данных: ${err}`,
+        });
         })
     }
   }
@@ -191,11 +244,28 @@ function App() {
       .deleteMovie(id, token)
       .then(() => {
         updateSavedMovies(savedMovies.filter(movie => movie._id === id ? null : movie));
-        console.log('Фильм успешно удален из избранного.');
+        setIsInfoTooltipOpen(true);
+        setTooltipStatus({
+          url: success,
+          title: 'Фильм успешно удален из избранного.',
+      });
       })
       .catch((err) => {
         console.log(`Ошибка удаления данных: ${err}`);
+        setIsInfoTooltipOpen(true);
+        setTooltipStatus({
+          url: fail,
+          title: `Ошибка удаления данных: ${err}`,
+      });
       })
+  }
+
+  function handleInfoTooltip() {
+    setIsInfoTooltipOpen(!isInfoTooltipOpen)
+  }
+
+  function closePopups() {
+    setIsInfoTooltipOpen(false)
   }
 
 
@@ -222,6 +292,7 @@ function App() {
               movies={savedMovies}
               getMovies={getSavedMovies}
               onMovieDel={onMovieDel}
+              showPreloader={showPreloader}
             />
 
             <ProtectedRoute path="/profile"
@@ -233,11 +304,13 @@ function App() {
             <Route path="/signup">
               <Register
                 handleRegister={handleRegister}
+                showPreloader={showPreloader}
               />
             </Route>
             <Route path="/signin">
               <Login
                 onLogin={handleLogin}
+                showPreloader={showPreloader}
               />
             </Route>
             <Route path="*">
@@ -246,6 +319,11 @@ function App() {
           </Switch>
         </main>
         <Footer />
+        <InfoTooltip
+          onClose={closePopups}
+          data={tooltipStatus}
+          isOpen={isInfoTooltipOpen}
+        />
       </div>
     </CurrentUserContext.Provider>
   );

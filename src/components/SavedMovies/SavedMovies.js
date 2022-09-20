@@ -4,7 +4,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesList from '../MoviesList/MoviesList';
 import { UseFilterMovies } from '../UseForm/UseFilterMovies'
 
-function SavedMovies({ loggedIn, movies, onMovieDel, getMovies }) {
+function SavedMovies({ movies, onMovieDel, getMovies, showPreloader }) {
     const {
         short,
         setShort,
@@ -38,6 +38,7 @@ function SavedMovies({ loggedIn, movies, onMovieDel, getMovies }) {
                 movies={filteredMovies}
                 short={short}
                 onMovieDel={onMovieDel}
+                showPreloader={showPreloader}
                 />
         </>
     )

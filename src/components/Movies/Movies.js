@@ -5,8 +5,9 @@ import MoviesList from '../MoviesList/MoviesList';
 import { moviesApi } from '../../utils/MoviesApi';
 import { UseFilterMovies } from '../UseForm/UseFilterMovies';
 
-function Movies({loggedIn, savedMovies, onMovieSave}) {
+function Movies({savedMovies, onMovieSave}) {
   const [beatFilmMovies, setBeatFilmMovies] = useState([]);
+  const [showPreloader, setShowPreloader] = useState(false);
   const [isSearchError, setIsSearchError] = useState(false);
 
   const {
@@ -24,6 +25,7 @@ function Movies({loggedIn, savedMovies, onMovieSave}) {
       setBeatFilmMovies(JSON.parse(localStorage.getItem('beatFilmMovies')));
       filterMovies(JSON.parse(localStorage.getItem('beatFilmMovies')), inputSearch, short)
     } else {
+      setShowPreloader(true);
       moviesApi
         .getMassivMovies()
         .then(data => {
@@ -36,6 +38,7 @@ function Movies({loggedIn, savedMovies, onMovieSave}) {
           setIsSearchError(true);
           console.log(err)
         })
+        .finally(() => setShowPreloader(false));
     }
   }
 
@@ -59,6 +62,8 @@ function Movies({loggedIn, savedMovies, onMovieSave}) {
         movies={filteredMovies}
         savedMovies={savedMovies}
         onMovieSave={onMovieSave}
+        showPreloader={showPreloader}
+        isSearchError={isSearchError}
        />
     </>
   )

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import UseForm from '../UseForm/UseForm';
 import './Login.css'
+import Preloader from '../Preloader/Preloader'
 
 import logo from '../../images/logo.svg'
 
@@ -20,6 +21,7 @@ function Login({ onLogin, showPreloader }) {
                 <img src={logo} alt="Логотип" className="login__logo" />
             </Link>
             <h2 className='login__title'>Рады видеть!</h2>
+            <Preloader showPreloader={showPreloader} />
             <form className="form login__form" onSubmit={handleSubmit} noValidate>
                 <label className="label">E-mail</label>
                 <input

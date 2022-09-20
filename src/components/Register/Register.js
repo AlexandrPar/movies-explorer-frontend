@@ -5,7 +5,7 @@ import './Register.css'
 import logo from '../../images/logo.svg'
 import Preloader from '../Preloader/Preloader';
 
-function Register({ handleRegister }) {
+function Register({ handleRegister, showPreloader  }) {
     const { enteredValues, errors, isFormValid, handleChange } = UseForm({});
 
     function handleSubmit(evt) {
@@ -23,6 +23,7 @@ function Register({ handleRegister }) {
                 <img src={logo} alt="Логотип" className="register__logo" />
             </Link>
             <h2 className='register__title'>Добро Пожаловать!</h2>
+            <Preloader showPreloader={showPreloader} />
             <form className="form register__form" onSubmit={handleSubmit} noValidate>
                 <label className="label">Имя</label>
                 <input
