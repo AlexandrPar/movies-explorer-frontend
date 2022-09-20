@@ -35,6 +35,7 @@ function App() {
       .signup(name, email, password)
       .then((res) => {
         if (res) {
+          handleLogin(email, password)
           history.push("/movies");
           setIsInfoTooltipOpen(true);
           setTooltipStatus({
@@ -50,8 +51,9 @@ function App() {
           url: fail,
           title: `Ошибка регистрации: ${err}`,
         });
+        setShowPreloader(false)
       })
-      .finally(() => {setShowPreloader(false);})
+      .finally(() => { setShowPreloader(false); })
   };
 
   function handleLogin(email, password) {
@@ -71,11 +73,11 @@ function App() {
         console.log(`Ошибка авторизации: ${err}`);
         setIsInfoTooltipOpen(true);
         setTooltipStatus({
-            url: fail,
-            title: `Ошибка авторизации: ${err}`,
+          url: fail,
+          title: `Ошибка авторизации: ${err}`,
         });
       })
-      .finally(() => {setShowPreloader(false);})
+      .finally(() => { setShowPreloader(false); })
   };
 
   function tokenCheck() {
@@ -104,16 +106,16 @@ function App() {
         setCurrentUser({ name: res.name, email: res.email, id: res._id })
         setIsInfoTooltipOpen(true);
         setTooltipStatus({
-            url: success,
-            title: `Данные успешно обновлены!`,
+          url: success,
+          title: `Данные успешно обновлены!`,
         });
       })
       .catch((err) => {
         console.log(`Ошибка обновления данных: ${err}`);
         setIsInfoTooltipOpen(true);
         setTooltipStatus({
-            url: fail,
-            title: `Ошибка обновления данных: ${err}`,
+          url: fail,
+          title: `Ошибка обновления данных: ${err}`,
         });
       });
   }
@@ -131,7 +133,6 @@ function App() {
     localStorage.removeItem('beatFilmInputSearch');
     localStorage.removeItem('beatFilmFilteredMovies');
     localStorage.removeItem('beatFilmShort');
-    history.push("/");
   };
 
   function setDataInfo() {
@@ -205,7 +206,7 @@ function App() {
           setTooltipStatus({
             url: success,
             title: 'Фильм успешно добавлен в избранное.',
-        });
+          });
         })
         .catch((err) => {
           console.log(`Ошибка загрузки данных: ${err}`);
@@ -213,7 +214,7 @@ function App() {
           setTooltipStatus({
             url: fail,
             title: `Ошибка загрузки данных: ${err}`,
-        });
+          });
         });
     } else {
       const id = savedMovies.find(item => item.movieId === movie.id)._id;
@@ -225,7 +226,7 @@ function App() {
           setTooltipStatus({
             url: success,
             title: 'Фильм успешно удален из избранного.',
-        });
+          });
         })
         .catch((err) => {
           console.log(`Ошибка удаления данных: ${err}`);
@@ -233,7 +234,7 @@ function App() {
           setTooltipStatus({
             url: fail,
             title: `Ошибка удаления данных: ${err}`,
-        });
+          });
         })
     }
   }
@@ -249,7 +250,7 @@ function App() {
         setTooltipStatus({
           url: success,
           title: 'Фильм успешно удален из избранного.',
-      });
+        });
       })
       .catch((err) => {
         console.log(`Ошибка удаления данных: ${err}`);
@@ -257,7 +258,7 @@ function App() {
         setTooltipStatus({
           url: fail,
           title: `Ошибка удаления данных: ${err}`,
-      });
+        });
       })
   }
 
@@ -304,12 +305,14 @@ function App() {
             />
             <Route path="/signup">
               <Register
+                loggedIn={loggedIn}
                 handleRegister={handleRegister}
                 showPreloader={showPreloader}
               />
             </Route>
             <Route path="/signin">
               <Login
+                loggedIn={loggedIn}
                 onLogin={handleLogin}
                 showPreloader={showPreloader}
               />

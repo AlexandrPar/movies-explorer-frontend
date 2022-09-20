@@ -1,10 +1,10 @@
-import React, { useContext }  from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import UseForm from '../UseForm/UseForm';
 import './Profile.css'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ handleUpdateUser, onClick}) {
+function Profile({ handleUpdateUser, onClick }) {
     const currentUser = useContext(CurrentUserContext);
     const { enteredValues, errors, isFormValid, handleChange } = UseForm();
     const isNotChange = Boolean(currentUser.email === enteredValues.email && currentUser.name === enteredValues.name);
@@ -41,7 +41,7 @@ function Profile({ handleUpdateUser, onClick}) {
                     placeholder={currentUser.name}
                     pattern="[A-Za-zА-Яа-яЁё\s-]{2,30}"
                     onChange={handleChange}
-                    defaultValue={currentUser.name}
+                    defaultValue={enteredValues.name}
                 />
                 <span id="name-error" className="error">{errors.name ? 'поле Имя от 2 до 30 символов, содержит только латиницу, кириллицу, пробел или дефис.' : ''}</span>
                 <label className="profile__label">E-mail</label>
@@ -53,13 +53,14 @@ function Profile({ handleUpdateUser, onClick}) {
                     minLength="2"
                     maxLength="40"
                     id="email"
+                    pattern='^[^@\s]+@[^@\s]+\.[^@\s]+$'
                     onChange={handleChange}
                     placeholder={currentUser.email}
-                    defaultValue={currentUser.email}
+                    defaultValue={enteredValues.email}
                 />
                 <span id="email-error" className="error">{errors.email}</span>
-                <button disabled={!isFormValid || isNotChange} type="submit" aria-label="Редактировать" className={`profile__submit ${(isFormValid && !isNotChange) ? '' : 'profile__submit_disabled'}`}>Редактировать</button>
-                <Link to="/signin" onClick={onClick} className="profile__link_login">Выйти из аккаунта</Link>
+                <button type="submit" aria-label="Редактировать" className={`profile__submit ${(isFormValid && !isNotChange) ? '' : 'profile__submit_disabled'}`} disabled={!isFormValid || isNotChange} >Редактировать</button>
+                <Link to="/" onClick={onClick} className="profile__link_login">Выйти из аккаунта</Link>
             </form>
         </div>
     )

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import UseForm from '../UseForm/UseForm';
 import './Register.css'
 import logo from '../../images/logo.svg'
 import Preloader from '../Preloader/Preloader';
+import { useHistory } from "react-router-dom";
 
-function Register({ handleRegister, showPreloader  }) {
+function Register({ handleRegister, showPreloader, loggedIn }) {
     const { enteredValues, errors, isFormValid, handleChange } = UseForm({});
+
+    const history = useHistory();
 
     function handleSubmit(evt) {
         evt.preventDefault();
@@ -15,6 +18,12 @@ function Register({ handleRegister, showPreloader  }) {
         }
         handleRegister(enteredValues.name, enteredValues.email, enteredValues.password);
     }
+
+    useEffect(() => {
+        if (loggedIn) {
+            history.push("/movies");
+        }
+      }, [ loggedIn, history]);
 
 
     return (
@@ -48,6 +57,7 @@ function Register({ handleRegister, showPreloader  }) {
                     minLength="2"
                     maxLength="40"
                     id="email"
+                    pattern='^[^@\s]+@[^@\s]+\.[^@\s]+$'
                     onChange={handleChange}
                     value={enteredValues.email || ''}
                 />

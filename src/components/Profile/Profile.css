@@ -69,6 +69,10 @@
     color: #000000;
 }
 
+.input__profile:focus::placeholder {
+    opacity: 0;
+}
+
 .profile__label {
     font-family: 'Inter';
     font-style: normal;
