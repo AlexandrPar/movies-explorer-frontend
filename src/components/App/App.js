@@ -75,6 +75,7 @@ function App() {
             title: `Ошибка авторизации: ${err}`,
         });
       })
+      .finally(() => {setShowPreloader(false);})
   };
 
   function tokenCheck() {
