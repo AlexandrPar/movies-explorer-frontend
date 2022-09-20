@@ -1,4 +1,4 @@
-const BASE_URL = 'http://api.parshukov.movies.nomoredomains.sbs';
+const BASE_URL = 'https://api.parshukov.movies.nomoredomains.sbs';
 
 function getRequest(res) {
     if (res.ok) {
