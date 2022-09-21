@@ -81,6 +81,11 @@
     cursor: pointer;
 }
 
+.register__submit_disabled{
+    margin: 134px 0 16px 0;
+    height: 45px;
+}
+
 .register__subtitle {
     margin: 0;
     font-family: 'Inter';

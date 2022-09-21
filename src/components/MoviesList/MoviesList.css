@@ -21,6 +21,17 @@
     cursor: pointer;
 }
 
+.movies-list__text{
+    display: none;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+    text-align: center;
+}
+
+.movies-list__text_visible {
+    display: block;
+  }
 
 @media screen and (max-width: 790px) {
     .movies-list {

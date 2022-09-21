@@ -4,7 +4,7 @@ import './Header.css';
 import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
 
-function Header() {
+function Header({loggedIn}) {
   const location = useLocation();
   const headerName = `header${location.pathname === "/" ? " header__theme_pink" : ""}`;
   return (
@@ -14,7 +14,7 @@ function Header() {
             <Link to="/" className="promo__logo">
               <img src={logo} alt="Логотип" className="header__logo" />
             </Link>
-            <Navigation />
+            <Navigation loggedIn={loggedIn}/>
         </header>
       </Route>
     </Switch>
